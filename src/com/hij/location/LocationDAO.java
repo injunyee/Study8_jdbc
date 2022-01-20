@@ -9,9 +9,15 @@ import com.hij.util.DBConnector;
 
 public class LocationDAO
 {
+	private DBConnector dbConnector;
+	
+	public LocationDAO()
+	{
+		dbConnector = new DBConnector();
+	}
+	
 	public void getList() throws ClassNotFoundException, SQLException
 	{
-		DBConnector dbConnector = new DBConnector();
 		Connection con = dbConnector.getConnect();
 		String sql = "SELECT * FROM LOCATIONS";
 		PreparedStatement pst = con.prepareStatement(sql);
