@@ -17,12 +17,12 @@ public class DepartmentDAO //DAO : Data Access Object
 		dbConnector = new DBConnector();
 	}//constructor DepartmentDAO end
 	
-	public DepartmentDTO getOne(Integer department_id) throws ClassNotFoundException, SQLException
+	public DepartmentDTO getOne(DepartmentDTO dep) throws ClassNotFoundException, SQLException
 	{
 		Connection con = dbConnector.getConnect();
 		String sql = "SELECT * FROM DEPARTMENTS WHERE (DEPARTMENT_ID = ?)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, department_id);
+		st.setInt(1, dep.getDepartment_id());
 		ResultSet rs = st.executeQuery();
 		DepartmentDTO departmentdto = null;
 		

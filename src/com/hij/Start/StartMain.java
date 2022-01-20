@@ -19,7 +19,9 @@ public class StartMain
 //		List<DepartmentDTO> dtoList = departmentDAO.getList();
 //		
 //		departmentView.view(dtoList);
-		DepartmentDTO departmentDTO = departmentDAO.getOne(20);
+		DepartmentDTO departmentDTO = new DepartmentDTO();
+		departmentDTO.setDepartment_id(20);
+		departmentDTO = departmentDAO.getOne(departmentDTO);
 		System.out.println(departmentDTO.getDepartment_name());
 	}
 }
