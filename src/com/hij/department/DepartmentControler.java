@@ -38,7 +38,7 @@ public class DepartmentControler
 				dto = departmentDao.getOne(dto);
 				if(dto == null)
 				{
-					System.out.println("부서검색에 실패하였습니다.");
+					System.out.println("부서검색에 실패하였습니다ㅇ.");
 				}
 			}
 		}//while end
