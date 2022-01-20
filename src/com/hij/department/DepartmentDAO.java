@@ -15,7 +15,36 @@ public class DepartmentDAO //DAO : Data Access Object
 	public DepartmentDAO()
 	{
 		dbConnector = new DBConnector();
-	}
+	}//constructor DepartmentDAO end
+	
+	public DepartmentDTO getOne(Integer department_id) throws ClassNotFoundException, SQLException
+	{
+		Connection con = dbConnector.getConnect();
+		String sql = "SELECT * FROM DEPARTMENTS WHERE (DEPARTMENT_ID = ?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, department_id);
+		ResultSet rs = st.executeQuery();
+		DepartmentDTO departmentdto = null;
+		
+		if(rs.next() == true)
+		{
+			departmentdto = new DepartmentDTO();
+			departmentdto.setDepartment_id(rs.getInt("department_id"));
+			departmentdto.setDepartment_name(rs.getString("department_name"));
+			departmentdto.setManager_id(rs.getInt("manager_id"));
+			departmentdto.setLocation_id(rs.getInt("location_id"));
+		}
+		else
+		{
+			System.out.println("없는 부서번호 입니다.");
+		}
+		
+		rs.close();
+		st.close();
+		con.close();
+		
+		return departmentdto;
+	}//public void getOne end
 	
 	public List<DepartmentDTO> getList() throws ClassNotFoundException, SQLException
 	{

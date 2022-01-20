@@ -14,10 +14,12 @@ public class StartMain
 		System.out.printf("program start.\n");
 		
 		DepartmentDAO departmentDAO = new DepartmentDAO();
-		DepartmentView departmentView = new DepartmentView();
-		
-		List<DepartmentDTO> dtoList = departmentDAO.getList();
-		
-		departmentView.view(dtoList);
+//		DepartmentView departmentView = new DepartmentView();
+//		
+//		List<DepartmentDTO> dtoList = departmentDAO.getList();
+//		
+//		departmentView.view(dtoList);
+		DepartmentDTO departmentDTO = departmentDAO.getOne(20);
+		System.out.println(departmentDTO.getDepartment_name());
 	}
 }
